@@ -4,7 +4,7 @@ var exports = module.exports = {};
 exports.distance1 = function(v,t){
     return v*t;
 };
-exports.distance2 = function(v,t){
+exports.distance2 = function(v,a,t){
     return ((a*t*t)+(v*t))/2;
 };
 exports.velocity1= function(d,t){
