@@ -10,7 +10,7 @@ exports.distance2 = function(v,a,t){
 exports.velocity1= function(d,t){
     return d/t;
 };
-exports.velocity2 = function(vi,a,t){
+exports.velocity2 = function(v,a,t){
     return v+a*t;
 };
 exports.time = function(d,v){
