@@ -12,14 +12,14 @@ function printOptions(){
     console.log("\nEnter the variables you know in a comma list.");
     console.log("If you do not know a variable, then type n");
     console.log("distance,velocity,acceleration,time,mass,energy");
-  }
-  function convertToArray(strcma){
-      strcma = strcma.split(',');
-      for(let i=0;i<strcma.length;i++){
-          strcma[i] = Number(strcma[i]);
-      }
-      return strcma;
-  }
+}
+function convertToArray(strcma){
+    strcma = strcma.split(',');
+    for(let i=0;i<strcma.length;i++){
+        strcma[i] = Number(strcma[i]);
+    }
+    return strcma;
+}
 
 
   function end(){
@@ -29,64 +29,71 @@ function printOptions(){
 
 terminal.question("What type of equation are you looking for?",function(str){
     if(str=="motion"){
-        terminal.question("Which variable are you solving for?"),function(str){
-            if(str=="d"){
-                terminal.question("What do you know?"),function(array){
-                    printOptions();
-                    if(Number.isNaN(array[2])){
-                      console.log(motion.distance1(array[1],array[3]));
-                      end();
+        terminal.question("Which variable are you solving for?",function(str1){
+            if(str1=="d"){
+                printOptions();
+                terminal.question("What do you know?",function(str){
+                    if(Number.isNaN(str[2])){
+                        convertToArray(str);
+                        console.log(motion.distance1(str[1],str[3]));
+                        end();
 
                     }
                     else{
-                        console.log(motion.distance2(array[1],array[2],array[3]));
+                        convertToArray(str);
+                        console.log(motion.distance2(str[1],str[2],str[3]));
                         end();
                     }
-                }
+                });
 
             }
 
-            else if(str=="v"){
-                terminal.question("What do you know?"),function(str){
-                    printOptions();
-                    if(Number.isNaN(array[2])){
-                        console.log(motion.velocity1(array[0],array[3]));
+            else if(str1=="v"){
+                printOptions();
+                terminal.question("What do you know?",function(str){
+                    if(Number.isNaN(str[2])){
+                        convertToArray(str);
+                        console.log(motion.velocity1(str[0],str[3]));
                         end();
                     }
                     else{
-                        motion.velocity2(array[1],array[2],array[3]);
+                        convertToArray(str);
+                        console.log(motion.velocity2(str[1],str[2],str[3]));
                         end();
                     }
-                }
+                });
             }
-            else if(str=="t"){
-                motion.time(array[0],array[1]);
+            else if(str1=="t"){
+                convertToArray(str);
+                console.log(motion.time(str[0],str[1]));
                 end();
             }
-            else if(str=="a"){
-                motion.acceleration(arry[1],array[3]);
+            else if(str1=="a"){
+                convertToArray(str);
+                console.log(motion.acceleration(str[1],str[3]));
                 end();
             }
-        }
+        });
     }
     else if(str=="energy"){
-        terminal.question("Which variable are you solving for?"),function(str){
+        terminal.question("Which variable are you solving for?",function(str){
+            printOptions();
             if(str=="ke"){
-                printOptions();
-                console.log(energy.kineticEnergy(array[4],array[1]))
+                convertToArray(str);
+                console.log(energy.kineticEnergy(str[4],str[1]))
                 end();
             }
             else if(str=="m"){
-                printOptions();
-                console.log(energy.mass(array[5],array[1]))
+                convertToArray(str);
+                console.log(energy.mass(str[5],str[1]))
                 end();
             }
             else if(str=="v"){
-                printOptions();
-                console.log(energy.velocity(array[5],array[4]))
+                convertToArray(str);
+                console.log(energy.velocity(str[5],str[4]))
                 end();
             }
-        }
+        });
 
 
 
